@@ -5,7 +5,6 @@ function random(nb) {
     return Math.floor(Math.random() * nb);
 }
 
-
 function getLetter() {
     const letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     return letters[random(letters.length)]
@@ -20,7 +19,6 @@ function makePassword(options) {
     for (let i = 0; i < options.size; i++) {
 
         if (options.withNumbers === true && i % 2 === 0) {
-
             password += random(9);
         }
         else {
@@ -28,8 +26,9 @@ function makePassword(options) {
         }
     }
     if (options.size < 8) {
-        alert("Votre mot de passe est de taille inferieure a 8 mais a tout de même été enregistré")
+        alert("Votre mot de passe est de taille inferieure a 8, mais a tout de même été enregistré")
     }
     return password;
 }
+
 console.log(makePassword({ size: 15, withNumbers: true }))

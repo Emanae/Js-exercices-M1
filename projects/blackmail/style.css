@@ -14,7 +14,7 @@ body {
 
 .class3 {
     font-size: 20ch;
-    font-weight: bolder
+    font-weight: bolder;
 }
 
 .class4 {
@@ -34,4 +34,7 @@ body {
 .spaceclass{
     height: 10px;
     width: 500px;
+}
+div{
+    margin-right:5px;
 }

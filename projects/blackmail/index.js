@@ -11,7 +11,6 @@ if (localStorage.getItem('message')) {
 input.addEventListener('input', e => displayMessage(e.target.value));
 
 function displayMessage(messageText) {
-    // myElement.addEventListener("click", () => Changebg(color)
     const divs = document.querySelectorAll('div');
     for (div of divs) {
         div.remove()
