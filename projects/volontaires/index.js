@@ -1,0 +1,2 @@
+let people = [];
+let passedPeople = [];

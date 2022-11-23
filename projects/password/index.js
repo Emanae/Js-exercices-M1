@@ -22,7 +22,6 @@ function makePassword(options) {
         if (options.withNumbers === true && i % 2 === 0) {
 
             password += random(9);
-            console.log(password)
         }
         else {
             password += getLetter()
