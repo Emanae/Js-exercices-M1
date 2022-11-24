@@ -1,6 +1,7 @@
 'use_strict';
 
 async function getPokemons(number, lang = 'en') {
+    // [Romain] tu n'as pas besoin de définir ce tableau de langue
     const language = ['roomaji', 'ko', 'zh-Hant', 'fr', 'de', 'es', 'it', 'en', 'ja', 'zh-Hans'];
     if (!language.includes(lang)) {
         lang = 'en';
@@ -13,6 +14,10 @@ async function getPokemons(number, lang = 'en') {
     const pokemonList = await Promise.all(pokemonPromissesList);
 
     pokemonList.sort((a, b) => {
+        /**
+         * [Romain] Tu peux écrire ça plus simplement:
+         * return a.id - b.id
+         */
         if (a.id < b.id)
             return -1;
         if (a.id > b.id)
@@ -24,9 +29,15 @@ async function getPokemons(number, lang = 'en') {
 
 async function getPokemonDatas(pokemon, lang) {
     let namePokemon = "";
+    // [Romain] utilise plutot Promise.all pour optimiser ton chargement
     const { sprites } = await getUrlDatas(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`);
     const { names, id } = await getUrlDatas(`https://pokeapi.co/api/v2/pokemon-species/${pokemon.name}`);
 
+    /**
+     * [Romain] utilise plutot .find, pour arrêter ta boucle après que tu as trouvé,
+     * ce qui te permet aussi de ne pas utiliser let sur namePokemon:
+     * const namePokemon = names.find(n => n.language.name === lang)?.name;
+     */
     names.forEach((langName) => { if (langName.language.name === lang) { namePokemon = langName.name } })
 
     return { id: id, name: namePokemon, image: sprites.front_default };
