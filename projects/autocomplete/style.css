@@ -1,0 +1,36 @@
+body
+{
+    justify-content: center;
+  padding: 30px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+h1{
+    padding: 30px;
+    font-weight: bold;
+    font-size: 25px;
+    justify-content: center;
+}
+h2{
+    justify-content: center;
+}
+#suggestions {
+    border: 1px dotted #ccc;
+    padding: 3px;
+  }
+  #suggestions option {
+    padding: 5px 0;
+  }
+  #suggestions option:hover {
+    background: #eee;
+  }
+.municipality{
+    color: rgb(85, 85, 85);
+}
+.departement{
+    font-weight: bold;
+    color: rgb(58, 58, 58);
+}
+.region{
+    font-weight: bold;
+    color: black;
+}

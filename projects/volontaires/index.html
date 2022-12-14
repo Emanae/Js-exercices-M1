@@ -1,22 +1,37 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8" />
 
-    <meta description="Volontaires" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+  <meta charset="utf-8" />
 
-    <link
-      rel="stylesheet"
-      href="https://necolas.github.io/normalize.css/latest/normalize.css"
-    />
-    <link rel="stylesheet" href="../../../styles/reset.css" />
-    <link rel="stylesheet" href="./style.css" />
+  <meta description="Volontaires" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <script src="./index.js" defer></script>
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css" />
+  <link rel="stylesheet" href="../../../styles/reset.css" />
+  <link rel="stylesheet" href="./style.css" />
 
-    <title>Volontaires</title>
-  </head>
+  <script type="module" src="./index.js" defer></script>
 
-  <body></body>
+  <title>Volontaires</title>
+</head>
+
+<body>
+  <h1>Choose a Volonteer</h1>
+  <section class="container">
+    <div class="buttons">
+      <button type="button" id="AddName">Add Name</button>
+      <button type="button" id="deleteName">Delete Name</button>
+      <button type="button" id="deleteAll">Delete All</button>
+    </div>
+
+    <input type="text" id="person">
+    <div class="choice">
+      <button type="button" id="choice">Choose a Name</button>
+    </div>
+    <div id="nameSection"></div>
+    <div id="choosenPerson"></div>
+  </section>
+</body>
+
 </html>

@@ -12,5 +12,3 @@ Règles:
 - enregistrer dans le `localStorage` l'état de la liste pour pouvoir la réutiliser qd on revient plus tard sur la page
 - prévoir un `<button>` pour supprimer les gens de la liste
 - ne pas toucher au `<body>` du HTML
-
-

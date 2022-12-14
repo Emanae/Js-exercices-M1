@@ -4,28 +4,26 @@ function random(nb) {
 
     return Math.floor(Math.random() * nb);
 }
-
+const letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 function getLetter() {
-    const letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     return letters[random(letters.length)]
 }
 
-function makePassword(options) {
-    if (!options || !options.size || !options.withNumbers) {
-        options.size = 10;
-        options.withNumbers = true;
-    }
-    let password = " "
-    for (let i = 0; i < options.size; i++) {
+function makePassword(options = {}) {
+    let { size, withNumbers } = options;
+    size ? size : 10;
+    if (withNumbers === undefined || withNumbers === null) { withNumbers = true };
+    let password = "";
+    for (let i = 0; i < size; i++) {
 
-        if (options.withNumbers === true && i % 2 === 0) {
-            password += random(9);
+        if (withNumbers && i % 2 === 0) {
+            password += random(10);
         }
         else {
             password += getLetter()
         }
     }
-    if (options.size < 8) {
+    if (size < 8) {
         alert("Votre mot de passe est de taille inferieure a 8, mais a tout de même été enregistré")
     }
     return password;

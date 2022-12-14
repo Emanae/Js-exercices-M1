@@ -12,30 +12,22 @@ async function getPokemons(number, lang = 'en') {
     })
     const pokemonList = await Promise.all(pokemonPromissesList);
 
-    pokemonList.sort((a, b) => {
-        if (a.id < b.id)
-            return -1;
-        if (a.id > b.id)
-            return 1;
-        return 0;
-    });
+    pokemonList.sort((a, b) => { a.id - b.id });
     console.log(pokemonList);
+    return (pokemonList);
 }
 
 async function getPokemonDatas(pokemon, lang) {
-    let namePokemon = "";
     const { sprites } = await getUrlDatas(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`);
     const { names, id } = await getUrlDatas(`https://pokeapi.co/api/v2/pokemon-species/${pokemon.name}`);
 
-    names.forEach((langName) => { if (langName.language.name === lang) { namePokemon = langName.name } })
+    const namePokemon = names.find(n => n.language.name === lang)?.name;
 
     return { id: id, name: namePokemon, image: sprites.front_default };
 }
 
 async function getUrlDatas(url) {
-    const response = await fetch(url); // réponse HTTP
-    const data = await response.json();
-    return data;
+    return fetch(url).json;
 }
 
 getPokemons(2, 'fr');
