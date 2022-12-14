@@ -12,6 +12,10 @@ h1{
 }
 h2{
     justify-content: center;
+
+}
+p{
+  font-size: 20px;
 }
 #suggestions {
     border: 1px dotted #ccc;
@@ -23,14 +27,15 @@ h2{
   #suggestions option:hover {
     background: #eee;
   }
-.municipality{
-    color: rgb(85, 85, 85);
+.commune{
+    color: black;
+    background-color: #83bace;
 }
 .departement{
-    font-weight: bold;
-    color: rgb(58, 58, 58);
+    color: black;
+    background-color: #83b3ce;
 }
 .region{
-    font-weight: bold;
     color: black;
+    background-color: rgb(109, 165, 195);
 }
