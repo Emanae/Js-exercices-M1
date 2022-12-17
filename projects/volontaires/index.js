@@ -1,3 +1,7 @@
+/**
+ * Écris plutôt
+ * import { random, removeOnList } from "./utils.js";
+ */
 import { random } from "./utils.js";
 import { removeOnList } from "./utils.js";
 
@@ -26,6 +30,8 @@ function addPeople() {
     else {
         alert("Entrez un prénom qui n'est pas encore dans la liste")
     }
+
+    // Manque la sauvegarde dans le localStorage
 }
 
 function deletePeople() {
@@ -33,6 +39,7 @@ function deletePeople() {
     const div = document.getElementById(`${person}`);
     div.remove()
 
+    // Utilise .filter plutot, ça sera beaucoup plus simple
     removeOnList(people.findIndex(element => element === person), people);
     removeOnList(notYetPassed.findIndex(element => element === person), notYetPassed);
 
@@ -52,8 +59,13 @@ function choice() {
     displayChange(notYetPassed[index])
     removeOnList(index, notYetPassed);
     if (notYetPassed.length === 0) {
+      /**
+       * Ici tu ne fais que dupliquer le tableau:
+       * tu pourrais faire notYetPassed =
+       */
         notYetPassed = people.map((person) => { return person });
         const divs = document.querySelectorAll("div.otherDivs");
+        // Plutôt .classList.add()
         divs.forEach((div) => div.className = "notYetPassedPeopleDivs")
     }
 }
@@ -65,6 +77,7 @@ function display() {
         const div = document.createElement('div');
         div.textContent = person;
         div.id = person;
+        // Plutôt .classList.add()
         div.className = notYetPassed.includes(person) ? "notYetPassedPeopleDivs" : "otherDivs";
         container.append(div);
     }
@@ -73,6 +86,7 @@ function display() {
 }
 function displayChange(choosenPerson) {
     const div = document.getElementById(`${choosenPerson}`);
+    // Plutôt .classList.add()
     div.className = "otherDivs";
     choiceDiv.textContent = choosenPerson;
 }
