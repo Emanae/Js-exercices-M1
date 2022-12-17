@@ -6,6 +6,10 @@ const choiceContainer = document.getElementById('searchPlace');
 
 async function getSuggestions() {
     const inputValue = document.getElementById("geo").value;
+
+    /**
+     * Tu pourrais parralléliser tes requêtes avec Promise.all
+     */
     const municipalities = await getUrlDatas(url + `/communes?nom=${inputValue}`);
     const departements = await getUrlDatas(url + `/departements?nom=${inputValue}`);
     const regions = await getUrlDatas(url + `/regions?nom=${inputValue}`);
@@ -34,6 +38,9 @@ async function getSuggestions() {
         }
     })).sort((a, b) => a.nom - b.nom)
 
+    /**
+     * Tu peux concaténer plus simplement avec [...a, ...b]
+     */
     const allSuggestions = regionsdepartementsObjects.concat(municipalitiesObjects);
     displaySuggestion(allSuggestions);
 }
@@ -44,6 +51,7 @@ function displaySuggestion(suggestions) {
         const li = document.createElement('option');
         li.textContent = suggestion.type === "commune" ? `${suggestion.codeDepartement} - ${suggestion.nom}   ` : suggestion.nom;
         li.value = suggestion.type === "commune" ? `${suggestion.codeDepartement} - ${suggestion.nom}   ` : suggestion.nom;
+        // Utilise classList.add
         li.className = suggestion.type;
         suggestionContainer.append(li);
         li.addEventListener('click', () => displayChoice(suggestion));
@@ -56,6 +64,7 @@ function displayChoice(choice) {
     title.textContent = `Vous avez choisi :    ${choice.nom}`;
     choiceContainer.append(title);
 
+    // Bien vu !
     Object.keys(choice).forEach((key) => {
         const p = document.createElement('p');
         p.textContent = `${key} : ${choice[key]}`;

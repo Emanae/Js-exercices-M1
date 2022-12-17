@@ -12,6 +12,7 @@ const buttonall = document.createElement('button');
 buttonall.textContent = "All";
 buttons.append(buttonall);
 buttonall.addEventListener("click", () => clearAndSetDatas(_10Call));
+// Utilise des classes plutôt, notamment avec la pseudo classe :focus
 buttonall.addEventListener("mousedown", () => button.style.background = "yellow");
 buttonall.addEventListener("mouseup", () => button.style.background = "black");
 
@@ -20,6 +21,7 @@ _10Call.map((personnageNbButton) => {
     buttons.append(button);
     button.textContent = `Personnage${personnageNbButton}`;
     button.addEventListener("click", () => clearAndSetDatas([personnageNbButton]));
+    // Utilise des classes plutôt, notamment avec la pseudo classe :focus
     button.addEventListener("mousedown", () => button.style.background = "yellow");
     button.addEventListener("mouseup", () => button.style.background = "black");
 })
@@ -34,6 +36,9 @@ buttonrandom.addEventListener("click", () => clearAndSetDatas([Math.floor(Math.r
 function clearAndSetDatas(personnagesId) {
 
     section.innerHTML = '';
+    /**
+     * Tu pourrais écrire personnagesId.forEach(displayStarWarsData)
+     */
     personnagesId.forEach((id) => displayStarWarsData(id))
 
 }
@@ -41,6 +46,9 @@ function clearAndSetDatas(personnagesId) {
 async function displayStarWarsData(index) {
     const { name, height, mass, films } = await getUrlDatas(`https://swapi.dev/api/people/${index}/`)
 
+    /**
+     * Si tu cliques vite sur 2 persos, les infos des 2 vont s'afficher
+     */
     const div = document.createElement('div');
     section.append(div);
     const ul = document.createElement('ul');
@@ -58,6 +66,10 @@ async function displayStarWarsData(index) {
 
 
     films.forEach(async (url) => {
+      /**
+       * J'aime pas trop l'effet "les films s'affichent au fur et a mesure"
+       * mais bon, rien de grave
+       */
         const { title } = await getUrlDatas(url)
         const liFilm = document.createElement('li');
         liFilm.textContent = title;
